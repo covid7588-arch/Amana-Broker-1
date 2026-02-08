@@ -11,7 +11,7 @@ export async function registerRoutes(
 ): Promise<Server> {
   // Register Object Storage Routes
   registerObjectStorageRoutes(app);
-  app.post("/api/webhook", async (req, res) => {
+  app.post(" /webhook async (req, res) => {
     const { message } = req.body;
     if (message && message.text) {
       const chatId = message.chat.id;

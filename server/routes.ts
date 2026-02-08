@@ -11,6 +11,22 @@ export async function registerRoutes(
 ): Promise<Server> {
   // Register Object Storage Routes
   registerObjectStorageRoutes(app);
+  app.post("/api/webhook", async (req, res) => {
+    const { message } = req.body;
+    if (message && message.text) {
+      const chatId = message.chat.id;
+      const botToken = "8408930683:AAHDiUFtw2xHMmyJYlLK8khrxCEJx-xMvZ0";
+      await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: "ሰላም! ቦቱ አሁን በትክክል እየሰራ ነው።",
+        }),
+      });
+    }
+    return res.status(200).json({ ok: true });
+  });
 
   // Users
   app.get(api.users.get.path, async (req, res) => {

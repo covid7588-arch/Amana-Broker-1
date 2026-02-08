@@ -23,7 +23,7 @@ export async function registerRoutes(
           chat_id: chatId,
           text: "ሰላም! ቦቱ አሁን በትክክል እየሰራ ነው።",
         }),
-      });
+      });/index.ts
     }
     return res.status(200).json({ ok: true });
   });

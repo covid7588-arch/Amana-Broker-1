@@ -15,7 +15,7 @@ export async function registerRoutes(
     const { message } = req.body;
     if (message && message.text) {
       const chatId = message.chat.id;
-      const botToken = "8408930683:AAHDiUFtw2xHMmyJYlLK8khrxCEJx-xMvZ0";
+      const botToken = process.env.BOT_TOKEN;
       await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
